@@ -1,0 +1,86 @@
+#!/bin/sh
+
+# extractTFmatrix: Extract PFM from 4 databases from a list of transcription factors.
+
+# Copyright 2018 Petar Petrov (Turku, Finland)
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/02_extractTFmatrix}
+
+# List of _all_ transcription factors for which we retrieve PFM. Not
+# to be confused with TRFACT below.
+TRFACTORS=${TRFACTORS:-trfactors.txt}
+
+# Region names, one region per row. Regions are named after the trans-
+# cription factors that are expected to be found there.
+TRFACT=${TRFACT:-trfact.txt}
+
+# PFM names output
+OUT=output
+
+# Collected PFM output
+MTX=matrix
+
+# PFM per region. This is what you need to run MAST later.
+TFM=${TFM:-matrixRegion}
+
+mkdir -p $TMP
+cd $TMP
+
+rm -rf $OUT $MTX $TFM
+mkdir -p $OUT $MTX $TFM
+
+# Databases available
+DB1=JASPAR/JASPAR2018_CORE_vertebrates_non-redundant
+DB2=JASPAR/JASPAR2018_CORE_vertebrates_redundant
+DB3=HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format
+DB4=HUMAN/HOCOMOCOv11_full_HUMAN_mono_meme_format
+
+# Which databases shall we search?
+MOTIFDB=( $DB1 $DB2 $DB3 $DB4 )
+
+# Tell grep to get lines with words STARTING with string (\b), then
+# clean up by removing any lines containing "URL", ":" (usually) in
+# complexes, such as RXRA::RARA, and any other characters preceding
+# or in the end of the transcription factor name that we are searching
+# for (for example if we want to get PFM for CTCF, but _not_ CTCFL).
+for database in ${MOTIFDB[@]} ; do
+ while read -r tf ; do
+  mkdir -p $OUT/$database
+   grep -i "\b${tf}" /var/lib/meme-suite/motif_databases/${database}.meme | \
+   grep -v "URL" | \
+   grep -v ":" | \
+   grep -v ${tf}[a-z,A-Z,0-9] | \
+   grep -v [a-z,A-Z,0-9]${tf} | \
+   awk '{print $2}' >> $OUT/$database/$tf
+    while read -r a ; do
+     meme-get-motif -id $a /var/lib/meme-suite/motif_databases/${database}.meme >> $MTX/$tf
+    done < $OUT/$database/$tf
+ done < $CWD/$TRFACTORS
+done
+
+# Collect PFM of the expected trancription factors for each reagion
+cd $MTX
+while read -r trf ; do
+ PFM=$(echo $trf | cut -d "-" -f1)
+ cat $PFM > ../$TFM/$trf.meme
+done < $CWD/$TRFACT
+

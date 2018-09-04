@@ -1,0 +1,7 @@
+# 0-order Markov frequencies from file regionMasked/086-enhancer_strong/086-enhancer_strong_clean.fa.masked
+# seqs: 13    min: 255    max: 628    avg: 554.2    sum: 7205    alph: DNA
+# order 0
+A 2.627e-01
+C 2.373e-01
+G 2.373e-01
+T 2.627e-01

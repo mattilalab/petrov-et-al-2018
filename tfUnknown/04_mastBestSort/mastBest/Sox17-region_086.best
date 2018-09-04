@@ -1,0 +1,30 @@
+# All non-overlapping hits in all sequences from "/home/petrov/Desktop/searchForNovel/run2/03_extract/regionPretty/086-enhancer_strong_clean.fa".
+# sequence_name (strand+/-)motif id alt_id hit_start hit_end score hit_p-value
+Callithrix_jacchus:70044961-70045562 +3 SOX17_HUMAN.H11MO.0.C - 173 183   752.20 8.93e-04
+Callithrix_jacchus:70044961-70045562 +3 SOX17_HUMAN.H11MO.0.C - 204 214   744.29 9.36e-04
+Callithrix_jacchus:70044961-70045562 +1 MA0078.1 Sox17 287 295  1201.37 6.96e-05
+Callithrix_jacchus:70044961-70045562 -3 SOX17_HUMAN.H11MO.0.C - 318 328  1139.99 5.62e-05
+Chlorocebus_sabaeus:119305601-119306217 +3 SOX17_HUMAN.H11MO.0.C - 282 292  1139.99 5.62e-05
+Chlorocebus_sabaeus:119305601-119306217 -3 SOX17_HUMAN.H11MO.0.C - 58 68  1108.34 7.26e-05
+Chlorocebus_sabaeus:119305601-119306217 -1 MA0078.1 Sox17 315 323  1201.37 6.96e-05
+Gorilla_gorilla:19440017-19440618 +1 MA0078.1 Sox17 491 499   807.02 7.36e-04
+Gorilla_gorilla:19440017-19440618 -1 MA0078.1 Sox17 7 15   807.02 7.36e-04
+Homo_sapiens:124736177-124736777 -3 SOX17_HUMAN.H11MO.0.C - 60 70  1037.11 1.30e-04
+Homo_sapiens:124736177-124736777 -1 MA0078.1 Sox17 317 325  1201.37 6.96e-05
+Macaca_fascicularis:126093610-126094235 +3 SOX17_HUMAN.H11MO.0.C - 284 294  1139.99 5.62e-05
+Macaca_fascicularis:126093610-126094235 -3 SOX17_HUMAN.H11MO.0.C - 60 70  1108.34 7.26e-05
+Macaca_fascicularis:126093610-126094235 -1 MA0078.1 Sox17 317 325  1201.37 6.96e-05
+Macaca_mulatta:123937746-123938371 +3 SOX17_HUMAN.H11MO.0.C - 284 294  1139.99 5.62e-05
+Macaca_mulatta:123937746-123938371 -3 SOX17_HUMAN.H11MO.0.C - 60 70  1108.34 7.26e-05
+Macaca_mulatta:123937746-123938371 -1 MA0078.1 Sox17 317 325  1201.37 6.96e-05
+Mus_musculus:59089888-59090335 +1 MA0078.1 Sox17 432 440   779.82 8.26e-04
+Mus_musculus:59089888-59090335 -3 SOX17_HUMAN.H11MO.0.C - 285 295   807.60 6.41e-04
+Mus_musculus:59089888-59090335 -3 SOX17_HUMAN.H11MO.0.C - 343 353   775.94 7.81e-04
+Pan_paniscus:124172659-124173258 -3 SOX17_HUMAN.H11MO.0.C - 60 70  1037.11 1.30e-04
+Pan_paniscus:124172659-124173258 -1 MA0078.1 Sox17 317 325  1201.37 6.96e-05
+Pan_troglodytes:127145911-127146511 -3 SOX17_HUMAN.H11MO.0.C - 60 70  1037.11 1.30e-04
+Pan_troglodytes:127145911-127146511 -1 MA0078.1 Sox17 317 325  1201.37 6.96e-05
+Papio_anubis:119751224-119751842 -3 SOX17_HUMAN.H11MO.0.C - 206 216   934.23 2.78e-04
+Papio_anubis:119751224-119751842 -3 SOX17_HUMAN.H11MO.0.C - 322 332   878.83 4.05e-04
+Pongo_abelii:132397612-132398240 -1 MA0078.1 Sox17 322 330  1201.37 6.96e-05
+# mast -oc mast/Sox17-region_086 -minseqs 1 -mev 10 -ev 10 -hit_list -sep -w /home/petrov/Desktop/searchForNovel/run2/03_extract/matrixRegion/Sox17-region_086.meme /home/petrov/Desktop/searchForNovel/run2/03_extract/regionPretty/086-enhancer_strong_clean.fa

@@ -1,0 +1,81 @@
+#!/bin/sh
+
+# mastOnly: Run MAST with selected PFM.
+
+# Copyright 2018 Petar Petrov (Turku, Finland)
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/03_mastOnly}
+
+# Region names, one region per row. Regions are named after the trans-
+# cription factors that are expected to be found there.
+SEARCH=${SEARCH:-trfact.txt}
+
+# Folder containing the sequences of the genomic regions listed above
+# ($SEARCH variable).
+REGION=${REGION:-regionPretty}
+
+# Folder containing the TFM collected for each region.
+TFM=${TFM:-matrixRegion}
+
+# Output of MAST results
+MAST=${MAST:-mast}
+
+# MAST best hits. This is what you need for prepareGff3
+BEST=${BEST:-mastBest}
+
+mkdir -p $TMP
+cd $TMP
+
+rm -rf $MAST $BEST
+mkdir -p $MAST $BEST
+
+# Loop through all regions with known TF bidning sites and run MAST
+while read -r u ; do
+ KNOWN=$u
+ echo "Processing region $KNOWN"
+ 
+ echo "Running MAST with collected matrices"
+ mast \
+ -oc $MAST/$KNOWN \
+ -minseqs 1 \
+ -mev 10 \
+ -ev 10 \
+ -sep \
+ -w \
+ $CWD/$TFM/$KNOWN.meme \
+ $CWD/$REGION/${KNOWN}_clean.fa
+
+ echo "Generating MAST best hit list"
+ mast \
+ -oc $MAST/$KNOWN \
+ -minseqs 1 \
+ -mev 10 \
+ -ev 10 \
+ -hit_list \
+ -sep \
+ -w \
+ $CWD/$TFM/$KNOWN.meme \
+ $CWD/$REGION/${KNOWN}_clean.fa > $BEST/$KNOWN.best
+
+done < $CWD/$SEARCH
+
+echo "done..."

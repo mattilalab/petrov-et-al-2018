@@ -1,0 +1,4 @@
+EWSR1-FLI1 region 086
+Sox17 region 086
+SRF region 086
+NEUROG2 region 086

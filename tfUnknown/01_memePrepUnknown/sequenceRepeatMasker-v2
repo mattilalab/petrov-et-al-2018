@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# sequenceRepeatMasker. Run this script after running memePrepUnknown
+
+# Copyright 2018 Petar Petrov (Turku, Finland)
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/05_memePrepUnknown}
+
+# This is what the script reads
+TRFACT=${TRFACT:-regions.txt}
+PRETTY=${PRETTY:-regionPretty}
+
+# This is what the script generates
+MASKED=${MASKED:-regionMasked}
+BACKGR=${BACKGR:-maskedBackground}
+SHFFLE=${SHFFLE:-regionShuffled}
+
+mkdir -p $TMP
+cd $TMP
+rm -rf $BACKGR $MASKED $SHFFLE
+mkdir -p $BACKGR $MASKED $SHFFLE
+
+while read -r u ; do
+ UNKNOWN=$u
+ echo "=> Processing region $UNKNOWN"
+
+# Mask repeats in sequences
+ mkdir -p $MASKED/$UNKNOWN
+ RepeatMasker -species mammal $PRETTY/${UNKNOWN}_clean.fa -dir $MASKED/$UNKNOWN
+
+# Create background file from the repeat masked sequences
+ fasta-get-markov $MASKED/$UNKNOWN/${UNKNOWN}_clean.fa.masked $BACKGR/${UNKNOWN}_clean.fa.masked.background
+
+# Create background file from input sequences
+ fasta-get-markov $PRETTY/${UNKNOWN}_clean.fa $BACKGR/${UNKNOWN}_clean.fa.background
+ 
+# Shuffle nucleotides in the sequences (this can be used as a 'negative control' for MAST)
+ fasta-shuffle-letters $PRETTY/${UNKNOWN}_clean.fa $SHFFLE/${UNKNOWN}_clean.fa.shuffled
+
+done < $CWD/$TRFACT
