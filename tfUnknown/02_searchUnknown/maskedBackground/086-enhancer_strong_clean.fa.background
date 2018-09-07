@@ -1,0 +1,7 @@
+# 0-order Markov frequencies from file regionPretty/086-enhancer_strong_clean.fa
+# seqs: 13    min: 255    max: 628    avg: 554.2    sum: 7205    alph: DNA
+# order 0
+A 2.428e-01
+C 2.572e-01
+G 2.572e-01
+T 2.428e-01

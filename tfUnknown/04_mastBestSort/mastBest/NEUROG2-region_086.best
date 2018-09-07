@@ -1,0 +1,23 @@
+# All non-overlapping hits in all sequences from "/home/petrov/Desktop/searchForNovel/run2/03_extract/regionPretty/086-enhancer_strong_clean.fa".
+# sequence_name (strand+/-)motif id alt_id hit_start hit_end score hit_p-value
+Bos_taurus:16961881-16962136 +1 MA0669.1 NEUROG2 85 94   330.98 5.86e-04
+Callithrix_jacchus:70044961-70045562 +1 MA0669.1 NEUROG2 149 158   209.29 8.50e-04
+Callithrix_jacchus:70044961-70045562 +1 MA0669.1 NEUROG2 349 358  1009.01 6.38e-05
+Callithrix_jacchus:70044961-70045562 +1 MA0669.1 NEUROG2 537 546   191.90 8.91e-04
+Chlorocebus_sabaeus:119305601-119306217 -1 MA0669.1 NEUROG2 253 262  1009.01 6.38e-05
+Chlorocebus_sabaeus:119305601-119306217 -1 MA0669.1 NEUROG2 452 461   209.29 8.50e-04
+Homo_sapiens:124736177-124736777 -1 MA0669.1 NEUROG2 255 264  1009.01 6.38e-05
+Macaca_fascicularis:126093610-126094235 -1 MA0669.1 NEUROG2 255 264  1009.01 6.38e-05
+Macaca_fascicularis:126093610-126094235 -1 MA0669.1 NEUROG2 454 463   209.29 8.50e-04
+Macaca_mulatta:123937746-123938371 -1 MA0669.1 NEUROG2 255 264  1009.01 6.38e-05
+Macaca_mulatta:123937746-123938371 -1 MA0669.1 NEUROG2 454 463   209.29 8.50e-04
+Mus_musculus:59089888-59090335 +1 MA0669.1 NEUROG2 286 295   261.44 7.19e-04
+Mus_musculus:59089888-59090335 -1 MA0669.1 NEUROG2 307 316   400.52 5.00e-04
+Pan_paniscus:124172659-124173258 -1 MA0669.1 NEUROG2 255 264  1009.01 6.38e-05
+Pan_troglodytes:127145911-127146511 -1 MA0669.1 NEUROG2 255 264  1009.01 6.38e-05
+Papio_anubis:119751224-119751842 +1 MA0669.1 NEUROG2 112 121   626.53 3.23e-04
+Papio_anubis:119751224-119751842 -1 MA0669.1 NEUROG2 112 121   939.47 9.23e-05
+Pongo_abelii:132397612-132398240 +1 MA0669.1 NEUROG2 325 334   261.44 7.19e-04
+Pongo_abelii:132397612-132398240 -1 MA0669.1 NEUROG2 260 269  1009.01 6.38e-05
+Pongo_abelii:132397612-132398240 -1 MA0669.1 NEUROG2 568 577   209.29 8.50e-04
+# mast -oc mast/NEUROG2-region_086 -minseqs 1 -mev 10 -ev 10 -hit_list -sep -w /home/petrov/Desktop/searchForNovel/run2/03_extract/matrixRegion/NEUROG2-region_086.meme /home/petrov/Desktop/searchForNovel/run2/03_extract/regionPretty/086-enhancer_strong_clean.fa

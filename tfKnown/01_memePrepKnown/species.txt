@@ -1,0 +1,17 @@
+Bos_taurus
+Callithrix_jacchus
+Canis_lupus_familiaris
+Chlorocebus_sabaeus
+Felis_catus
+Gorilla_gorilla
+Homo_sapiens
+Macaca_fascicularis
+Macaca_mulatta
+Monodelphis_domestica
+Mus_musculus
+Oryctolagus_cuniculus
+Pan_paniscus
+Pan_troglodytes
+Papio_anubis
+Pongo_abelii
+Rattus_norvegicus

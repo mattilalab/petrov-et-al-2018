@@ -1,0 +1,202 @@
+#!/bin/sh
+
+# novelTF: Search for novel transcription factor binding sites
+
+# Copyright 2018 Petar Petrov (Turku, Finland)
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Required packages:
+# meme-suite (http://meme-suite.org/)
+# bedtools (http://bedtools.readthedocs.io/)
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/06_predictTF}
+
+# Text file listing the names of the genomic regions to be searched.
+SEARCH=${SEARCH:-regions.txt}
+
+# Folder containing the sequences of the genomic regions listed above.
+REGION=${REGION:-regionPretty}
+
+# Folder containing the sequences of the genomic regions listed above,
+# with masked repeats by RepeatMasker.
+MASKED=${MASKED:-regionMasked}
+
+# Folder containing background Markov model files, generated from the
+# genomic regions with or without masked repeats.
+BACKGR=${BACKGR:-maskedBackground}
+
+# Output dirs for MEME, MAST, TomTom
+MEME=meme
+MAST=mast
+TOMTOM=tomtom
+
+# Runtime settings stats file
+STAT=${STAT:-runtime_settings.txt}
+
+# Motifs databases /var/lib/meme-suite/motif_databases/
+DB1=JASPAR/JASPAR2018_CORE_vertebrates_non-redundant
+DB2=JASPAR/JASPAR2018_CORE_vertebrates_redundant
+DB3=HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format
+DB4=HUMAN/HOCOMOCOv11_full_HUMAN_mono_meme_format
+
+# Define the (maximum) size of motifs to be searched by MEME first.
+# RANGE=( 8 12 16 20 24 )
+  RANGE=( 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 )
+
+# How many motifs should MEME try to find? We search for only 1 (the
+# best hit) per region, in order to minimise false-positives. However,
+# we leave the option to search for more (e.g. 3).
+# MTF=3
+  MTF=1
+
+# Define MEME motif distribution, as occurrances per sequence (ops):
+# oops (1), zoops (0 or 1), anr (any). We do not use anr.
+# OPS=( oops zoops anr )
+  OPS=( oops zoops anr )
+
+# Which motif database(s) should TomTom search against.
+ MOTIFDB=( $DB1 $DB2 $DB3 $DB4 )
+# MOTIFDB=( $DB1 $DB3 )
+#  MOTIFDB=( $DB1 )
+
+# Define distribution function for TomTom.
+# MOTIFDS=( ed kullback pearson )
+  MOTIFDS=( allr ed kullback pearson sandelin blic1 blic5 llr1 llr5 )
+
+# Make workdirs
+mkdir -p $TMP
+cd $TMP
+rm -rf $MEME $MAST $TOMTOM $STAT
+mkdir -p $MEME $MAST $TOMTOM
+touch $STAT
+
+# Stamp when the analysis was started
+date --iso-8601=seconds >> $TMP/$STAT
+
+# Loop through all genomic regions where novel motifs are to be
+# searched (specified by $SEARCH variable). We run MEME, TomTom and
+# MAST consecutively for each.
+while read -r u ; do
+ UNKNOWN=$u
+ echo "Processing region $UNKNOWN" >> $TMP/$STAT
+
+# Search genomic region sequences with masked repeats for novel motifs
+# with MEME. We search using each of the $OPS modes specified above,
+# looking for motifs with gradually increasing size. The minimum motif
+# width is 6 nucleotides (-minw 6), while the maximum is incremented
+# by one nucleotide in every following iteration (-maxw $size, where
+# $size is specified in the $RANGE variable above).
+ for mode in ${OPS[@]} ; do
+  for size in ${RANGE[@]} ; do
+   mkdir -p $MEME/$UNKNOWN/$mode/$size
+   echo "Running MEME search for motifs of $size bases with -mod $mode" >> $TMP/$STAT
+   meme \
+    $CWD/$MASKED/$UNKNOWN/${UNKNOWN}_clean.fa.masked \
+    -dna \
+    -oc $MEME/$UNKNOWN/$mode/$size \
+    -maxsize 60000 \
+    -mod $mode \
+    -nmotifs $MTF \
+    -minw 6 \
+    -maxw $size \
+    -revcomp \
+    -V \
+    -bfile $CWD/$BACKGR/${UNKNOWN}_clean.fa.masked.background
+
+# Extract the motif sequence identified by each mode ($mode, defined
+# by $OPS) for each motif length ($size, defined in $RANGE) from H. 
+# sapiens (only). We then convert the sequence by iupac2meme to the
+# motif matrix format that is used by the meme-suite. The matrix
+# will be very simple (no variablility), since it is generated from a
+# single sequence, from only one organism (H. sapiens). We do this
+# aiming to minimise false-positives and since our original goal was
+# to identify novel motifs in H. sapiens.
+   echo "Converting H. sapiens motifs to MEME matrices" >> $TMP/$STAT
+   grep "Homo_sapiens" $MEME/$UNKNOWN/$mode/$size/meme.txt | grep "(  ...)" | while read -r a b c d e ; do
+   iupac2meme $d >> $MEME/$UNKNOWN/motifs.meme ; done
+  done
+ done
+
+# Run TomTom to compare the identified motifs from H. sapiens to one
+# (default) or more motif database(s) of known motifs. We consider
+# all available distribution functions, ($distr, defined by $MOTIFDS).
+# The command line version of TomTom sets the default threshold value
+# to 0.5 and this is what we use. We have left the option to search
+# against more than one motif database.
+ for motif in ${MOTIFDB[@]} ; do
+  for distr in ${MOTIFDS[@]} ; do
+   mkdir -p $TOMTOM/$UNKNOWN/$motif/$distr
+   echo "Running TomTom with $dist against $motif" >> $TMP/$STAT
+   tomtom \
+    -no-ssc \
+    -oc $TOMTOM/$UNKNOWN/$motif/$distr \
+    -verbosity 4 \
+    -min-overlap 6 \
+    -internal \
+    -dist $distr \
+    -evalue \
+    -thresh 0.5 \
+    -bfile $CWD/$BACKGR/${UNKNOWN}_clean.fa.masked.background \
+    $MEME/$UNKNOWN/motifs.meme \
+    /var/lib/meme-suite/motif_databases/${motif}.meme
+ 
+# Get the matrices for the identified TF by TomTom from the motif
+# database. Ignore the first rown of column headers.
+   echo "Getting matrices for identified TF" >> $TMP/$STAT
+   sed 1d $TOMTOM/$UNKNOWN/$motif/$distr/tomtom.txt | while read -r a b c d e f g ; do
+   meme-get-motif -id $b \
+   /var/lib/meme-suite/motif_databases/${motif}.meme >> $TOMTOM/$UNKNOWN/$UNKNOWN.meme ; done
+  done
+ done
+ 
+# Run MAST with using the identified matrices against the non-masked,
+# sequence of each genomic region.
+ echo "Running MAST with collected matrices" >> $TMP/$STAT
+ mast \
+ -oc $MAST/$UNKNOWN \
+ -minseqs 1 \
+ -mev 0.0001 \
+ -ev 0.0001 \
+ -sep \
+ -bfile $CWD/$BACKGR/${UNKNOWN}_clean.fa.background \
+ $TOMTOM/$UNKNOWN/$UNKNOWN.meme \
+ $CWD/$REGION/${UNKNOWN}_clean.fa
+
+# Run MAST a second time to generate a best hits list.
+ echo "Generating MAST best hit list" >> $TMP/$STAT
+ mast \
+ -oc $MAST/$UNKNOWN \
+ -minseqs 1 \
+ -best \
+ -hit_list \
+ -mev 0.0001 \
+ -ev 0.0001 \
+ -sep \
+ -bfile $CWD/$BACKGR/${UNKNOWN}_clean.fa.background \
+ $TOMTOM/$UNKNOWN/$UNKNOWN.meme \
+ $CWD/$REGION/${UNKNOWN}_clean.fa > $MAST/$UNKNOWN.best
+
+done < $CWD/$SEARCH
+
+# When was the analysis completed
+date --iso-8601=seconds >> $TMP/$STAT
+
+echo "done"
