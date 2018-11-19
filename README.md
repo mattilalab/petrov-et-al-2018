@@ -3,4 +3,4 @@
 
 Please note!
 This is work in progress.
-We are in the process of commenting our home-made scripts.
+We are in the process of commenting our home-made scripts. We expect it to be ready till 23 November!
