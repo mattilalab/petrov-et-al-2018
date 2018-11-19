@@ -3,4 +3,4 @@
 
 Please note!
 This is work in progress.
-We are in the process of commenting our home-made scripts soon and upload detailed instructions of the workflow.
+We are in the process of commenting our home-made scripts.
