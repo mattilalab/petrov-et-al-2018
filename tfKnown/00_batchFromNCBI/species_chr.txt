@@ -1,0 +1,17 @@
+Homo_sapiens 8
+Pan_paniscus 8
+Pan_troglodytes 8
+Gorilla_gorilla 8
+Pongo_abelii 8
+Chlorocebus_sabaeus 8
+Macaca_fascicularis 8
+Macaca_mulatta 8
+Papio_anubis 8
+Callithrix_jacchus 16
+Mus_musculus 15
+Rattus_norvegicus 7
+Oryctolagus_cuniculus 3
+Bos_taurus 14
+Canis_lupus_familiaris 13
+Felis_catus F2
+Monodelphis_domestica 3
