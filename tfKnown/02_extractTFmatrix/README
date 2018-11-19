@@ -1,0 +1,16 @@
+The script in this folder extracts position frequency matrix (PFM) for
+a list of transcription factors (TF) from 4 databases.
+
+Files:
+
+1) trfactors.txt | List of the TF names for which we are going to
+   retrieve PFM.
+   
+2) trfact.txt | Genomic region names, same as the ones in
+   ../01_memePrepKnown/trfact.txt
+   
+3) extractTFmatrix | The script extracts the PFM from 4 databases for
+   the TF for each genomic region. It will output in the terminal the
+   TF for which there are no PFM available. The folder with PFM per
+   region is called "matrixRegion". You need this for step 3,
+   "03_mastOnly".

@@ -1,0 +1,24 @@
+The script in this folder runs MAST on the genomic regions of interest
+searching for TFs identified for each region in Homo sapiens.
+
+Files:
+
+1) matrixRegion/* | This folder should contain PFM, collected at step
+   02 for each TF found in H. sapiens.
+   
+   We have provided here a tarball of our own data, as an example.
+   
+2) regionPretty/* | This folder should contain sorted sequences by
+   their correcponding region in different species. The files are
+   generated at step 01. 
+   
+   We have provided here the regions from our own analyses, extracted
+   from the genome assemblies listed in supplementary Table S11.
+   
+3) trfact.txt | unique region names
+
+4) mastOnly | For each unique genomic region, where a TF was found in
+   Homo sapiens (defined in "trfact.txt"), this script runs MAST using
+   corresponding PFM (collected in "matrixRegion") to search across
+   the sorted genomic regions from different species ("regionPretty").
+   

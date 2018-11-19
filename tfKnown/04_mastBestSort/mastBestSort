@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# mastBestSort
+# mastBestSort: create a CVS table of the best TF hits
 
 # Copyright 2018 Petar Petrov (Turku, Finland)
 # All rights reserved.

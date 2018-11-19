@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# batchFromNCBI: download chromosomes from NCBI for a list of species
+
+# Copyright 2018 Petar Petrov (Turku, Finland)
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+CWD=$(pwd)
+
+# Species names and a chromosome number. Example:
+INPUT=${INPUT:-species_chr.txt}
+
+# The directory where chromosomes will be downloaded. Create it manually
+# and make sure you have enough disk space.
+CHRMS=${CHRMS:-/var/tmp/chromosomes}
+
+cd $CHRMS
+
+# Read the input file row by row, set the first word (the species name)
+# as 'a' and the second (chromosome number) as 'b'. Then use these as
+# respective variables. In case the chromosome is unknown (Un) use the
+# first download link. In case the genome is already assembled, use the
+# second download link to get the corresponding chromosome. Wget will
+# know if the archived chromosome is only partially downloaded (-c) and
+# resume download accordingly, if needed. Each chromosome is saved in
+# its own sub-folder having the species name.
+while read -r a b ; do
+ SPECIES=$a
+ CHR=$b
+ mkdir -p $SPECIES
+ cd $SPECIES
+  if [ "$CHR" = "Un" ] ; then
+    wget -c "ftp://ftp.ncbi.nlm.nih.gov/genomes/${SPECIES}/CHR_Un/*_ref_*_chrUn.fa.gz"
+  else
+    wget -c "ftp://ftp.ncbi.nlm.nih.gov/genomes/${SPECIES}/Assembled_chromosomes/seq/*_ref_*_chr${CHR}.fa.gz"
+  fi
+ cd ..
+done < $CWD/$INPUT

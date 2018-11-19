@@ -39,7 +39,7 @@ TFM=${TFM:-matrixRegion}
 # Output of MAST results
 MAST=${MAST:-mast}
 
-# MAST best hits. This is what you need for prepareGff3
+# MAST best hits. This is what you need.
 BEST=${BEST:-mastBest}
 
 mkdir -p $TMP

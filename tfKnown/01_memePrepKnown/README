@@ -1,0 +1,34 @@
+The script in this folder extracts and sorts corresponding genomic
+regions from multiple species.
+
+Files:
+
+1) species.txt | List of species (Latin_names) to be considered.
+
+2) bedFiles-uniqueRegions/* | This folder should contain the
+   collection of *.bed files with genomic coordinates from each
+   species. Use the bed file from Homo sapiens as a start to extract
+   the corresponding genomic coordinates for the rest of the species
+   by liftOver at UCSC:
+  
+   URL:  http://genome.ucsc.edu/cgi-bin/hgLiftOver
+   Each genomic regions must have a unique name.
+   
+   IMPORTANT! If you have downloaded the chromosomes with our script
+   in 01, then remember that it pulls the latest genomic assembly for
+   each chromosome. Therefore, the coordinates in the bed files may
+   differ (as they were extracted in August-September 2018). You need
+   to get the coordinates between species genomes yourself at the URL
+   above.
+
+   Here, we have provided a tarball containing the bed files used in
+   our study as an example.
+   
+3) trfact.txt | List of genomic regions to be sorted (same names as
+   specified in the bed files).
+   
+4) memePrepKnown | The script extracts and sorts the corresponding
+   genomic regions from the species listed in "species.txt". The out-
+   put directory is /tmp/01_memePrepKnown and the sorted sequences
+   per region will be in the subfolder "regionPretty". You need this
+   for step 03.
