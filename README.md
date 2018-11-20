@@ -7,9 +7,12 @@ Home-brewed shell scripts
 These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackware.com/). All prerequisites were installed from the scripts at SlackBuilds.org (http://slackbuilds.org).
 
 ## Prerequisites
-1. RepeatMasker
- * Homepage: http://www.repeatmasker.org/
- * On SBo: http://slackbuilds.org/repository/14.2/academic/RepeatMasker/
+
+You need the following.
+
+1.  **RepeatMasker**
+    * Homepage: http://www.repeatmasker.org/
+    * On SBo: http://slackbuilds.org/repository/14.2/academic/RepeatMasker/
 2. 
 
 
