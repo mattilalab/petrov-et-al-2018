@@ -1,0 +1,26 @@
+tfUnknown: transcription factors (unknown) prediction
+
+This folder contains a collectin of script that were used in our study
+(Petrov et al 2018, MANUSCRIPT) to acquire data for transcription
+factor binding sequences reported for H. sapiens.
+
+The folders numbers follow the workflow order. Each folder contains a 
+more detailed README.
+
+The folders contain the following scripts:
+ 
+01_memePrepUnknown/
+Scripts to extract genomic sequences from their coordinates, sort
+them by corresponding region for multiple species and generate masked
+repeats and background profiles.
+
+02_searchUnknown/
+Script to predict novel transcription factors for H. sapiens.
+
+03_mastOnlyUnknown/
+A script that runs MAST (meme-suite) on genomic regions of interest
+searching for TFs.
+
+04_mastBestSortUnknown/
+A script that sorts the hits obtained in step 03 in a table (CSV),
+spreadshteet-friendly. Output is: "tableFinal.csv"
