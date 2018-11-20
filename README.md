@@ -29,16 +29,16 @@ Scripts are divided into two folders:
 
 1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
     * 00_batchFromNCBI/
-        * batchFromNCBI: Download chromosomes from NCBI for a list of species
+        * `batchFromNCBI`: Download chromosomes from NCBI for a list of species
         * batchGunzip: Batch extract gzipped chromosomes
     * 01_memePrepKnown/
-        * memePrepKnown: Extract and sort corresponding genomic regions from multiple species
+        * `memePrepKnown`: Extract and sort corresponding genomic regions from multiple species
     * 02_extractTFmatrix/
-        * extractTFmatrix: Extract PFM from (4) databases for a list of transcription factors
+        * `extractTFmatrix`: Extract PFM from (4) databases for a list of transcription factors
     * 03_mastOnly/
-        * mastOnly: Run MAST with selected PFM on genomic regions of interest
+        * `mastOnly`: Run MAST with selected PFM on genomic regions of interest
     * 04_mastBestSort/
-        * mastBestSort: create a CVS table of the best TF hits    
+        * `mastBestSort`: create a CVS table of the best TF hits    
     
 2.   **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
 
