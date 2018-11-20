@@ -23,7 +23,7 @@ You need the following:
     * Download: http://meme-suite.org/doc/download.html
     * Location: /var/lib/meme-suite/motif_databases
 
-## Transcription factor binding sequences
+## TFBS: transcription factor binding sequences
 
 Scripts are divided into two folders:
 
