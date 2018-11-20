@@ -30,7 +30,7 @@ Scripts are divided into two folders:
 1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
     * 00_batchFromNCBI/
         * `batchFromNCBI`: Download chromosomes from NCBI for a list of species
-        * batchGunzip: Batch extract gzipped chromosomes
+        * `batchGunzip`: Batch extract gzipped chromosomes
     * 01_memePrepKnown/
         * `memePrepKnown`: Extract and sort corresponding genomic regions from multiple species
     * 02_extractTFmatrix/
