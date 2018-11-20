@@ -10,18 +10,26 @@ These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackw
 
 You need the following:
 
-1.  RepeatMasker
+1.  **RepeatMasker** (Screen DNA sequence for interspersed repeats)
     * Homepage: http://www.repeatmasker.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/RepeatMasker/
-2.  BedTools
+2.  **BedTools** (A powerful toolset for genome arithmetic)
     * Homepage: http://bedtools.readthedocs.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/bedtools/
-3.  MEME-suite
+3.  **MEME-suite** (Motif based sequence analysis tools)
     * Homepage: http://meme-suite.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/meme-suite/
-4.  Motif databases
+4.  **Motif databases** (Used by the MEME Suite)
     * Download: http://meme-suite.org/doc/download.html
     * Location: /var/lib/meme-suite/motif_databases
+
+## Contents
+
+Scripts are divided into two folders:
+
+1.   **tfKnown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to acquire data for transcription factor (TF) binding sequences. We used TFs reported for H. sapiens to also screen the corresponding genomic regions of other species.
+
+2.   **tfUnknown**:
 
 **Please note!**
 
