@@ -27,7 +27,7 @@ You need the following:
 
 Scripts are divided into two folders:
 
-###tfKnown
+### tfKnown
 
 This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
@@ -43,7 +43,7 @@ This folder contains scripts that were used in our study to acquire data for tra
 * 04_mastBestSort/
     * `mastBestSort`: Create a CVS table of the best TF hits.
     
-###tfUnknown
+### tfUnknown
 
 This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
