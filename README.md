@@ -25,7 +25,7 @@ You need the following:
 
 ## TFBS: transcription factor binding sequences
 
-Scripts are divided into two folders:
+Scripts are divided into two folders (check each sub-folder for detailed instructions):
 
 ### tfKnown
 
