@@ -2,7 +2,7 @@
 
 Petrov _et al_ 2018 (MANUSCRIPT)
 
-Home-brewed shell scripts
+Home-brewed shell scripts.
 
 These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackware.com/). All prerequisites were installed from the scripts at SlackBuilds.org (http://slackbuilds.org).
 
@@ -23,12 +23,24 @@ You need the following:
     * Download: http://meme-suite.org/doc/download.html
     * Location: /var/lib/meme-suite/motif_databases
 
-## Contents
+## Transcription factor binding sequences
 
 Scripts are divided into two folders:
 
-1.  **tfKnown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species.
-2.   **tfUnknown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
+1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
+    * 00_batchFromNCBI/
+        * batchFromNCBI: Download chromosomes from NCBI for a list of species
+        * batchGunzip: Batch extract gzipped chromosomes
+    * 01_memePrepKnown/
+        * memePrepKnown: Extract and sort corresponding genomic regions from multiple species
+    * 02_extractTFmatrix/
+        * extractTFmatrix: Extract PFM from (4) databases for a list of transcription factors
+    * 03_mastOnly/
+        * mastOnly: Run MAST with selected PFM on genomic regions of interest
+    * 04_mastBestSort/
+        * mastBestSort: create a CVS table of the best TF hits    
+    
+2.   **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
 
 **Please note!**
 
