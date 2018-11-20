@@ -8,15 +8,21 @@ These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackw
 
 ## Prerequisites
 
-You need the following.
+You need the following:
 
-1.  **RepeatMasker**
+1.  RepeatMasker
     * Homepage: http://www.repeatmasker.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/RepeatMasker/
-2. 
-
-
-
+2.  BedTools
+    * Homepage: http://bedtools.readthedocs.org/
+    * On SBo: http://slackbuilds.org/repository/14.2/academic/bedtools/
+3.  MEME-suite
+    * Homepage: http://meme-suite.org/
+    * On SBo: http://slackbuilds.org/repository/14.2/academic/meme-suite/
+4.  Motif databases
+    * Download: http://meme-suite.org/doc/download.html
+    * Location: /var/lib/meme-suite/motif_databases
 
 **Please note!**
+
 This is work in progress. We are in the process of commenting our home-made scripts. We expect it to be ready till 23 November!
