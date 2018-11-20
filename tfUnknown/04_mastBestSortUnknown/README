@@ -1,0 +1,15 @@
+The script in this folder sorts the hits obtained in step 03 in a
+table (CSV).
+
+Files:
+
+1) mastBest/* | Hits obtained from step 03 per region. Here we have
+   provided the data from our own analysis.
+
+2) regionTF.txt | List of unique TF regions.
+
+3) speciesSort.txt | List of species (Latin_names), arranged to follow
+   the phylogenetic tree order in Fig 6.
+
+4) mastBestSortUnknown | The script creates a table (CSV) indicating in which
+   species each TF was found at step 03.

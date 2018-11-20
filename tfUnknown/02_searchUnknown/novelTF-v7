@@ -22,12 +22,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Required packages:
-# meme-suite (http://meme-suite.org/)
-# bedtools (http://bedtools.readthedocs.io/)
-
 CWD=$(pwd)
-TMP=${TMP:-/tmp/06_predictTF}
+TMP=${TMP:-/tmp/02_searchUnknown}
 
 # Text file listing the names of the genomic regions to be searched.
 SEARCH=${SEARCH:-regions.txt}
@@ -48,16 +44,19 @@ MEME=meme
 MAST=mast
 TOMTOM=tomtom
 
-# Runtime settings stats file
+# Runtime settings stats and log file
 STAT=${STAT:-runtime_settings.txt}
 
-# Motifs databases /var/lib/meme-suite/motif_databases/
+# Motifs databases (should be in /var/lib/meme-suite/motif_databases/)
 DB1=JASPAR/JASPAR2018_CORE_vertebrates_non-redundant
 DB2=JASPAR/JASPAR2018_CORE_vertebrates_redundant
 DB3=HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format
 DB4=HUMAN/HOCOMOCOv11_full_HUMAN_mono_meme_format
 
-# Define the (maximum) size of motifs to be searched by MEME first.
+# Define the (maximum) sizes of motifs to be searched by MEME first.
+# More than one size can be specified. We allow the size of the
+# discovered motif to increment by a single nucleotide in the range of
+# 6-24.
 # RANGE=( 8 12 16 20 24 )
   RANGE=( 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 )
 
@@ -68,16 +67,16 @@ DB4=HUMAN/HOCOMOCOv11_full_HUMAN_mono_meme_format
   MTF=1
 
 # Define MEME motif distribution, as occurrances per sequence (ops):
-# oops (1), zoops (0 or 1), anr (any). We do not use anr.
-# OPS=( oops zoops anr )
+# oops (1), zoops (0 or 1), anr (any).
+# OPS=( oops zoops )
   OPS=( oops zoops anr )
 
-# Which motif database(s) should TomTom search against.
- MOTIFDB=( $DB1 $DB2 $DB3 $DB4 )
+# Which motif database(s) should TomTom search against. We search all.
 # MOTIFDB=( $DB1 $DB3 )
-#  MOTIFDB=( $DB1 )
+# MOTIFDB=( $DB1 )
+  MOTIFDB=( $DB1 $DB2 $DB3 $DB4 )
 
-# Define distribution function for TomTom.
+# Define distribution function for TomTom. We consider all.
 # MOTIFDS=( ed kullback pearson )
   MOTIFDS=( allr ed kullback pearson sandelin blic1 blic5 llr1 llr5 )
 
@@ -92,8 +91,9 @@ touch $STAT
 date --iso-8601=seconds >> $TMP/$STAT
 
 # Loop through all genomic regions where novel motifs are to be
-# searched (specified by $SEARCH variable). We run MEME, TomTom and
-# MAST consecutively for each.
+# searched (specified by the $SEARCH variable). In our study we had
+# only one. However, if there are more than one regions, MEME, TomTom
+# and MAST will run consecutively for each.
 while read -r u ; do
  UNKNOWN=$u
  echo "Processing region $UNKNOWN" >> $TMP/$STAT

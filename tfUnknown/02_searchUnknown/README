@@ -1,0 +1,27 @@
+The script in this folder searches for novel transcription factors in
+one or more genomic regions.
+
+Files:
+
+1) maskedBackground/* | This folder should contain background Markov
+   model files, generated from the genomic regions in "regionPretty"
+   with or without masked repeats.
+   
+   In our study, we selected only one region, which we have left in
+   the folder as an example.
+   
+2) regionMasked/* | This folder should contain the sequences of the
+   genomic regions with masked repeats, generated from "regionPretty"
+   by RepeatMasker.
+   
+3) regionPretty/* | This folder contains the sequences of the genomic
+   regions to be searched.
+   
+4) novelTF | This script calls meme, mast and tomotom from the meme-
+   suite and searches for novel transcription factor binding sites. It
+   will output hits for Homo sapiens. In the next step (03) we search
+   these novel TFs identified here for human in the other species.
+   Check the script's comments for options and variables.
+
+5) regions.txt | This text file lists the names of the genomic regions
+   to be searched.

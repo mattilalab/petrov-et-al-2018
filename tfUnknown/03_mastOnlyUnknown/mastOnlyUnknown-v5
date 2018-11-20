@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# mastOnly: Run MAST with selected PFM.
+# mastOnlyUnknown: Run MAST with selected PFM.
 
 # Copyright 2018 Petar Petrov (Turku, Finland)
 # All rights reserved.

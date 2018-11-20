@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/05_memePrepUnknown}
+TMP=${TMP:-/tmp/01_memePrepUnknown}
 
 # This is what the script reads
 TRFACT=${TRFACT:-regions.txt}

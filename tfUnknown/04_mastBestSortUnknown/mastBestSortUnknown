@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/04_mastBestSort}
+TMP=${TMP:-/tmp/04_mastBestSortUnknown}
 
 # List of regions and TFs expected to be found in each.
 REGION=${REGION:-regionTF.txt}
