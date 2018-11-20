@@ -21,13 +21,15 @@ You need the following:
     * On SBo: http://slackbuilds.org/repository/14.2/academic/meme-suite/
 4.  **Motif databases** (Used by the MEME Suite)
     * Download: http://meme-suite.org/doc/download.html
-    * Location: /var/lib/meme-suite/motif_databases
+    * Location: `/var/lib/meme-suite/motif_databases`
 
 ## TFBS: transcription factor binding sequences
 
 Scripts are divided into two folders:
 
-1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
+1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. 
+
+Contents:
     * 00_batchFromNCBI/
         * `batchFromNCBI`: Download chromosomes from NCBI for a list of species
         * `batchGunzip`: Batch extract gzipped chromosomes
@@ -38,9 +40,21 @@ Scripts are divided into two folders:
     * 03_mastOnly/
         * `mastOnly`: Run MAST with selected PFM on genomic regions of interest
     * 04_mastBestSort/
-        * `mastBestSort`: create a CVS table of the best TF hits    
+        * `mastBestSort`: Create a CVS table of the best TF hits    
     
-2.   **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
+2.  **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
+
+Contents:
+    * 01_memePrepUnknown/
+        * `memePrepUnknown`: Extract and sort corresponding genomic regions from multiple species
+        * `sequenceRepeatMasker`: Mask repeates on the sorted genomic regions
+    * 02_searchUnknown/
+        * `novelTF`: Search for novel transcription factor binding sites by MEME-suite
+    * 03_mastOnlyUnknown/
+        * `mastOnlyUnknown`: Run MAST with selected PFM on genomic regions of interest
+    * 04_mastBestSortUnknown/
+        * `mastBestSortUnknown`: Create a CVS table of the best TF hits
+
 
 **Please note!**
 
