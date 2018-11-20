@@ -27,9 +27,8 @@ You need the following:
 
 Scripts are divided into two folders:
 
-1.   **tfKnown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to acquire data for transcription factor (TF) binding sequences. We used TFs reported for H. sapiens to also screen the corresponding genomic regions of other species.
-
-2.   **tfUnknown**:
+1.  **tfKnown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species.
+2.   **tfUnknown**: This folder contains scripts that were used in our study (Petrov _et al_ 2018, MANUSCRIPT) to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
 
 **Please note!**
 
