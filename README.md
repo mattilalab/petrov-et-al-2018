@@ -27,9 +27,7 @@ You need the following:
 
 Scripts are divided into two folders:
 
-1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. 
-
-Contents:
+1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
 * 00_batchFromNCBI/
     * `batchFromNCBI`: Download chromosomes from NCBI for a list of species
@@ -43,9 +41,7 @@ Contents:
 * 04_mastBestSort/
     * `mastBestSort`: Create a CVS table of the best TF hits.
     
-2.  **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species.
-
-Contents:
+2.  **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
 * 01_memePrepUnknown/
     * `memePrepUnknown`: Extract and sort corresponding genomic regions from multiple species
@@ -56,8 +52,3 @@ Contents:
     * `mastOnlyUnknown`: Run MAST with selected PFM on genomic regions of interest
 * 04_mastBestSortUnknown/
     * `mastBestSortUnknown`: Create a CVS table of the best TF hits
-
-
-**Please note!**
-
-This is work in progress. We are in the process of commenting our home-made scripts. We expect it to be ready till 23 November!
