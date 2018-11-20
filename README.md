@@ -10,16 +10,16 @@ These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackw
 
 You need the following:
 
-1.  **RepeatMasker** (Screen DNA sequence for interspersed repeats)
+**1.  RepeatMasker** (Screen DNA sequence for interspersed repeats)
     * Homepage: http://www.repeatmasker.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/RepeatMasker/
-2.  **BedTools** (A powerful toolset for genome arithmetic)
+**2.  BedTools** (A powerful toolset for genome arithmetic)
     * Homepage: http://bedtools.readthedocs.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/bedtools/
-3.  **MEME-suite** (Motif based sequence analysis tools)
+**3.  MEME-suite** (Motif based sequence analysis tools)
     * Homepage: http://meme-suite.org/
     * On SBo: http://slackbuilds.org/repository/14.2/academic/meme-suite/
-4.  **Motif databases** (Used by the MEME Suite)
+**4.  Motif databases** (Used by the MEME Suite)
     * Download: http://meme-suite.org/doc/download.html
     * Location: `/var/lib/meme-suite/motif_databases`
 
@@ -27,7 +27,7 @@ You need the following:
 
 Scripts are divided into two folders:
 
-1.  **tfKnown**: This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
+**1.  tfKnown:** This folder contains scripts that were used in our study to acquire data for transcription factor (TF) binding sequences. We used TFs reported for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
 * 00_batchFromNCBI/
     * `batchFromNCBI`: Download chromosomes from NCBI for a list of species
@@ -41,7 +41,7 @@ Scripts are divided into two folders:
 * 04_mastBestSort/
     * `mastBestSort`: Create a CVS table of the best TF hits.
     
-2.  **tfUnknown**: This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
+**2.  tfUnknown:** This folder contains scripts that were used in our study to predict for novel TF binding sequences. We used TFs predicted for _H. sapiens_ to also screen the corresponding genomic regions of other species. Contents:
 
 * 01_memePrepUnknown/
     * `memePrepUnknown`: Extract and sort corresponding genomic regions from multiple species
