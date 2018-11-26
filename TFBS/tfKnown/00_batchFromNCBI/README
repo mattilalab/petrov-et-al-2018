@@ -7,18 +7,25 @@ Files:
    to be downloaded next to it. They should be space separated.
    
 2) batchFromNCBI | This script reads "species_chr.txt" and downloads
-   the chromosome sequence. See the script for locations.
+   the chromosome sequence. By default, the script downloads the
+   chromosomes in the following location:
    
+   /var/tmp/chromosomes
+   
+   Please NOTE that this will pull the *latest* genomic assembly of
+   each chromosome and the coordinates extracted between species
+   genomes (by liftOver in step 01) may differ. You *must* prepare
+   updated bed files, as explained in ../01_memePrepKnown/README. If
+   you wish to simply repeat our analyses, refer to supplementary
+   Table S11 for chromosome number and genome assembly version, then
+   download the files from
+   
+   URL:  ftp://ftp.ncbi.nlm.nih.gov/genomes/
+   
+   and place them in separate folders named after each species. For
+   example, download human chromosome 8 to:
+   
+   /var/tmp/chromosomes/Homo_sapiens
+
 3) batchGunzip | This script extracts (gunzips) the chromosomes
    downloaded by batchFromNCBI.
-
-Please NOTE that this will pull the *latest* genomic assembly of each
-chromosome and the coordinates extracted between species' genomes may
-differ. You *must* prepare updated bed files. If you wish to simply
-repeat our analyses, please, refer to supplementary Table S11 for
-chromosome number and genome assembly version, then download the files
-from ftp://ftp.ncbi.nlm.nih.gov/genomes/ and place them in separate
-folders named after each species.
-
-For example, download human chromosome 8 to:
-/var/tmp/chromosomes/Homo_sapiens

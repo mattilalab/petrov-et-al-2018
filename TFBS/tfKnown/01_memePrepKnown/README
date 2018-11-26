@@ -12,17 +12,21 @@ Files:
    by liftOver at UCSC:
   
    URL:  http://genome.ucsc.edu/cgi-bin/hgLiftOver
-   Each genomic regions must have a unique name.
+   
+   Each genomic region must have a unique name.
    
    IMPORTANT! If you have downloaded the chromosomes with our script
-   in 01, then remember that it pulls the latest genomic assembly for
+   in 00, then remember that it pulls the latest genomic assembly for
    each chromosome. Therefore, the coordinates in the bed files may
    differ (as they were extracted in August-September 2018). You need
    to get the coordinates between species genomes yourself at the URL
-   above.
+   above. Then prepare a collection of bed files named as the example,
+   starting with the latin name of each species:
+   
+   Homo_sapiens-*.bed
 
    Here, we have provided a tarball containing the bed files used in
-   our study as an example.
+   our study.
    
 3) trfact.txt | List of genomic regions to be sorted (same names as
    specified in the bed files).
