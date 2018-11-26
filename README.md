@@ -56,3 +56,7 @@ This folder contains scripts that were used in our study to predict for novel TF
     * `mastOnlyUnknown`: Run MAST with selected PFM on genomic regions of interest
 * 04_mastBestSortUnknown/
     * `mastBestSortUnknown`: Create a CVS table of the best TF hits
+
+## Scripts output
+
+The scripts use `/tmp` for their working ad output dirs. The only exception is 00_batchFromNCBI, which uses `/var/tmp/chromosomes`.

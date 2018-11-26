@@ -13,4 +13,7 @@ Files:
    the order of the species in the phylogenetic tree in Fig 6.
 
 4) mastBestSort | The script creates a table (CSV) indicating in which
-   species each TF was found at step 03.
+   species each TF was found at step 03. The table generated in our
+   analyses is
+   
+   ../tableFinal.csv
