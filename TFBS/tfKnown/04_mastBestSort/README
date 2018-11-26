@@ -1,16 +1,16 @@
-The script in this folder sorts the hits obtained in step 03 in a
-table (CSV).
+The script in this folder simply sorts the hits obtained in step 03,
+preparing a spreadhseet-friendly table of comma separated values (CSV).
 
 Files:
 
-1) mastBest/* | Hits obtained from step 03 per region. Here we have
-   provided the data from our own analysis.
+1) mastBest/* | Hits obtained from step 03 per region. This folder is
+   empty, however we provided a tarball with our data.
 
 2) regionTF.txt | List of unique TF regions, similar to "trfact.txt",
-   bit in two columns.
+   but in two columns.
 
 3) speciesSort.txt | List of species (Latin_names), arranged to follow
-   the phylogenetic tree order in Fig 6.
+   the order of the species in the phylogenetic tree in Fig 6.
 
 4) mastBestSort | The script creates a table (CSV) indicating in which
    species each TF was found at step 03.
