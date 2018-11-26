@@ -59,4 +59,4 @@ This folder contains scripts that were used in our study to predict for novel TF
 
 ## Scripts output
 
-The scripts use `/tmp` for their working ad output dirs. The only exception is 00_batchFromNCBI, which uses `/var/tmp/chromosomes`.
+The scripts use `/tmp` for their working and output dirs. The only exception is the scripts found in 00_batchFromNCBI, which use `/var/tmp/chromosomes`.
