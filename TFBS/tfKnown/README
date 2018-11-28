@@ -4,10 +4,11 @@ This folder contains a collectin of script that were used in our study
 (Petrov et al 2018, MANUSCRIPT) to acquire data for transcription
 factor binding sequences reported for H. sapiens.
 
-The folders numbers follow the workflow order. Each folder contains a 
+The folders' numbers follow the workflow order. Each folder contains a 
 more detailed README.
 
 The folders contain the following scripts:
+
 00_batchFromNCBI/
 Scripts to download and untar chromosome sequences from listed species
  
@@ -25,4 +26,5 @@ searching for TFs identified for each region in Homo sapiens.
 
 04_mastBestSort/
 A script that sorts the hits obtained in step 03 in a table (CSV),
-spreadshteet-friendly. Output is: "tableFinal.csv"
+spreadshteet-friendly. Output is: "tableFinal.csv", found in the same
+directory as this README.

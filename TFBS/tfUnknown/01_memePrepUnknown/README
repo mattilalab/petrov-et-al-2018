@@ -31,10 +31,10 @@ Files:
    genomic regions from the species listed in "species.txt". The out-
    put directory is /tmp/01_memePrepUnknown and the sorted sequences
    per region will be in the subfolder "regionPretty". You need this
-   for step 02.
+   for step 02. Run this script first.
    
 5) sequenceRepeatMasker | The script uses the sorted sequences by
    memePrepUnknown and masks repeats by calling RepeatMasker. You do
    not need to set up anything, just run it after memePrepUnknown. It
    uses the same folder in /tmp. The output you need for step 02 is
-   "regionMasked" and "maskedBackground". 
+   the subfolders "regionMasked" and "maskedBackground".
