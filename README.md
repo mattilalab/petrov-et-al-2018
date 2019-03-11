@@ -13,6 +13,8 @@ Oncology, IRCCS, San Raffaele Scientific Institute, Milano, Italy.
 Milano, Italy. 
 6. University of Queensland, St. Lucia, QLD, 4072, Australia.
 
+Correspondence and requests for the scripts should be addressed to P.P. (email: petar.petrov (ат) utu (дот) fi)
+
 # Shell scripts used in the study.
 
 These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackware.com/). All prerequisites were installed from the scripts at SlackBuilds.org (http://slackbuilds.org).
