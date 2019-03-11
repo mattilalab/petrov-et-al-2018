@@ -13,7 +13,7 @@ Oncology, IRCCS, San Raffaele Scientific Institute, Milano, Italy.
 Milano, Italy. 
 6. University of Queensland, St. Lucia, QLD, 4072, Australia.
 
-Home-brewed shell scripts.
+# Shell scripts used in the study.
 
 These simple shell scripts were tested on Slackware GNU/Linux (http://www.slackware.com/). All prerequisites were installed from the scripts at SlackBuilds.org (http://slackbuilds.org).
 
