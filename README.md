@@ -13,6 +13,8 @@ Oncology, IRCCS, San Raffaele Scientific Institute, Milano, Italy.
 Milano, Italy. 
 6. University of Queensland, St. Lucia, QLD, 4072, Australia.
 
+*Scientific Reports* https://www.nature.com/articles/s41598-019-40697-1
+
 * Correspondence and requests for the scripts should be addressed to Petar Petrov (firstname.lastname@utu.fi)
 
 # Shell scripts used in the study.
