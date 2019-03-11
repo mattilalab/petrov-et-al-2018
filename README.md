@@ -13,7 +13,7 @@ Oncology, IRCCS, San Raffaele Scientific Institute, Milano, Italy.
 Milano, Italy. 
 6. University of Queensland, St. Lucia, QLD, 4072, Australia.
 
-Correspondence and requests for the scripts should be addressed to P.P. (email: petar.petrov (ат) utu (дот) fi)
+* Correspondence and requests for the scripts should be addressed to Petar Petrov (firstname.lastname@utu.fi)
 
 # Shell scripts used in the study.
 
