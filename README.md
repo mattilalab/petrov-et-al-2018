@@ -1,6 +1,6 @@
 # Computational analysis of the evolutionarily conserved Missing In Metastasis / Metastasis Suppressor 1 gene predicts novel interactions, regulatory regions and transcriptional control
 
-_Petrov P, Sarapulov A, Eory L, Scielzo C, Scarfò L, Smith J, Burt WD and Mattila PK_
+_Petar Petrov, Alexey V. Sarapulov , Lel Eöry, Cristina Scielzo, Jacqueline Smith, David W. Burt & Pieta K. Mattila_
 
 
 Home-brewed shell scripts.
