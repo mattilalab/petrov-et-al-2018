@@ -1,7 +1,17 @@
 # Computational analysis of the evolutionarily conserved Missing In Metastasis / Metastasis Suppressor 1 gene predicts novel interactions, regulatory regions and transcriptional control
 
-_Petar Petrov <sup>1</sup> , Alexey V. Sarapulov 1 , Lel Eöry 2 , Cristina Scielzo Jacqueline Smith 2 , David W. Burt 6 & Pieta K. Mattila 1_
+_Petar Petrov<sup>1</sup>, Alexey V. Sarapulov<sup>1</sup>, Lel Eöry <sup>2</sup>, Cristina Scielzo<sup>3,4</sup>, Lydia Scarfò<sup>3,4,5</sup>, Jacqueline Smith<sup>2</sup>, David W. Burt<sup>6</sup> & Pieta K. Mattila<sup>1</sup>_
 
+1. Institute of Biomedicine, and MediCity Research Laboratories, University of Turku, Tykistökatu 6A, 20520, Turku,
+Finland. 
+2. Division of Genetics and Genomics, The Roslin Institute and R(D)SVS, University of Edinburgh, Roslin,
+Easter Bush campus, Midlothian, EH25 9RG, United Kingdom. 
+3. Unit of B Cell Neoplasia, Division of Molecular
+Oncology, IRCCS, San Raffaele Scientific Institute, Milano, Italy. 
+4. Università Vita-Salute San Raffaele, Milan, Italy.
+5. Strategic Research Program on CLL, Division of Experimental Oncology, IRCCS, San Raffaele Scientific Institute,
+Milano, Italy. 
+6. University of Queensland, St. Lucia, QLD, 4072, Australia.
 
 Home-brewed shell scripts.
 
